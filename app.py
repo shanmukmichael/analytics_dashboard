@@ -85,4 +85,4 @@ def create_plot_Scatter(x,y):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
