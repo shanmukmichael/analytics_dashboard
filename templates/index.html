@@ -1,89 +1,79 @@
-<!DOCTYPE html>
-<html>
-  <head>
-          <title>{% block title %} Data Visualization
-          {% endblock %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
-        <link href='https://fonts.googleapis.com/css?family=Anonymous Pro' rel='stylesheet'>
+    <!DOCTYPE html>
+    <html>
+      <head>
+              <title>{% block title %} Data Visualization{% endblock %}</title>
+            <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      </head>
 
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  </head>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <body class="bg-light"  style=" background-image: url({{ url_for('static', filename='bg3.jpg') }}) ;
+              background-size: cover;   font-family: 'Comfortaa';font-size: 22px;">
+        <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" style="text-shadow: 2px 4px 4px lightgray" >Data Visualization</a>
+            <div><h1 style="text-shadow: 2px 4px 4px lightgray" >Dashboard</h1></div>
+        </nav>
 
-
-
-  <body class="bg-light" style="background-image: url({{ url_for('static', filename='bg2.jpg') }}) ;
-          background-size: cover;   font-family: 'Comfortaa';font-size: 22px;" >
-    <nav class="navbar navbar-light bg-light display-6">
-  <a class="navbar-brand" style="text-shadow: 2px 4px 4px lightgray" >Data Visualization</a>
-
-         <h1 class="display-6" style="text-shadow: 2px 4px 4px lightgray; font-family: 'Anonymous Pro'" >WORTY-HACK 2020</h1>
-
-
-  <form class="form-inline" action="dashboard" method="post" enctype="multipart/form-data">
-       <div class="container">
-   <div class="row">
-   <div class="input-group mb-3 ">
-  <input type="file" class="custom-file-input" id="customFile" name="file">
-  <label class="custom-file-label"  for="customFile">Choose CSV file</label>
-   </div>
-    <div class="col-sm">
-   <button class="btn btn-outline-primary" style="box-shadow: 2px 5px 7px  lightgray"
-           type="submit">Upload</button>
-    </div>
-  </div>
-       </div>
-  </form>
-
-</nav>
-
-    <div style="alignment: center;font-size: medium;margin: 60px">
-            <h1 class="title" style="font-size:50px;text-align: center">
-  Training Analytics Dashboard<br><br>TEAM - Code Fury
-</h1><br>
-<h2 class="subtitle" style="font-size:25px;text-align: center">
-  by<br><br>
-  Shanmuk Pandranki<br><br>
-  Surisetty Abhishikth<br><br>
-    Bharadvaj<br><br>
-  Bharat Chandra<br>
-</h2><br><br><br>
+        <div class="card bg-light mb-1" style="box-shadow: 2px 5px 7px lightgrey;
+         border-radius: 10px;size: auto;
+        height: auto;width: auto;margin: 30px;max-width:90rem;font-size: small;
+        color: dimgrey;alignment: center" align="center">
+             <div class="card-header" style="font-size: large">table</div>
+              <div class="card-body">
+            {{ data | safe }}
+                  <br>
+            {{ response }}
         </div>
+         </div>
+<center>
+        <div class="card bg-light mb-1" style="box-shadow: 2px 5px 7px lightgrey; border-radius: 10px;
+        alignment: center;
+        margin:30px; max-width: 20rem; font-size: small;
+        color: dimgrey;" align="center">
+             <div class="card-header" style="font-size: large">choose columns</div>
+              <div class="card-body" style="width: auto;height: auto">
 
-<style>
-  h1, h2 {
-    text-shadow: 2px 4px 4px dimgrey;
-  }
-</style>
+        <form class="" action="graph" method="post">
+          <div class="row">
+              <div class="col">
+         <select class="custom-select custom-select-sm"  name="graph"  >
+            <option selected>graphs</option>
+        {% for i in graph_list %}
+            <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+                  </select>
+                       </div>
+          <div class="col">
+                  <select class="custom-select custom-select-sm"  name="x-axiss"  >
+            <option selected>x-axis</option>
+        {% for i in col_list %}
+            <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+                  </select>
+              </div>
+          <div class="col">
+              <select class="custom-select custom-select-sm"  name="y-axiss" >
+            <option selected>y-axis</option>
+        {% for i in col_list %}
+            <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+                  </select>
+              </div>
+          </div><br>
+              <div class="text-center"><button class="btn btn-outline-primary"
+                style="font-size:large;width: 100px;size:50px ;margin:10px ;box-shadow: 2px 5px 7px  lightgray"
+               type="submit">Plot</button></div>
+        </form>
+        </div>
+         </div>
+</center>
+    </body>
+    </html>
 
+    <style>
+        .navbar {
+            height: 65px;
+            box-shadow: 0 8px 6px -6px lightgrey;
+           }
 
-
-
-
-  </body>
-</html>
-        <script>
-            $('#customFile').on('change',function(){
-                var fileName = $(this).val();
-                $(this).next('.custom-file-label').html(fileName);
-            })
-        </script>
-
-<style>
-
-    .navbar {
-        height: 65px;
-        box-shadow: 0 8px 6px -6px lightgrey;
-          animation: mymove 5s infinite;
-
-    }
-    @keyframes mymove {
-  1% {box-shadow: 4px 4px 100px dimgrey}
-}
-
-
-</style>
+    </style>
 
