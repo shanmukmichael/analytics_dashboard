@@ -18,9 +18,8 @@ def index():
 def dashboard():
     try:
         f = request.files['file']
-
         if not f:
-            return "No file"
+            return "................Please Add File..............."
         stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
         data = pd.read_csv(stream)
         print(data)
@@ -34,7 +33,7 @@ def dashboard():
         col_list = []
         for i in cols:
             col_list.append(i)
-        graph_list = ['Bar', 'Scatter','Scatter3d']
+        graph_list = ['Bar','Pie', 'Scatter']
         return render_template('dashboard.html', col_list=col_list, graph_list=graph_list,
                                data=data.to_html(header=True, index=False), response=response)
     except:
@@ -49,15 +48,20 @@ def graph():
         y = request.form.get('y-axiss')
         graph_name = request.form.get('graph')
         print(x, y, graph_name)
-        if graph_name == 'Bar':
+        if x == 'x-axis' or  y== 'y-axis'or graph_name == 'graph':
+            return redirect(url_for('index'))
+        elif graph_name == 'Bar':
             bar = create_plot_bar(x, y)
             return render_template('graph.html', plot=bar)
         elif graph_name == 'Scatter':
             Scatter = create_plot_Scatter(x, y)
             return render_template('graph.html', plot=Scatter )
-        elif graph_name == 'Scatter':
-            Scatter3d = create_plot_Scatter3d(x, y)
-            return render_template('graph.html', plot=Scatter3d )
+        elif graph_name == 'Pie':
+            Pie = create_plot_Pie(x, y)
+            return render_template('graph.html', plot=Pie)
+
+        return redirect(url_for('index'))
+
 
 
 
@@ -67,16 +71,18 @@ def create_plot_bar(x,y):
     graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
 
+def create_plot_Pie(x,y):
+    data = [go.Pie(labels=df[x].tolist(),values=df[y].tolist())]
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
 def create_plot_Scatter(x,y):
     data = [go.Scatter(x=df[x],y=df[y])]
     graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
 
 
-def create_plot_Scatter3d(x,y):
-    data = [go.scatter3d(x=df[x],y=df[y])]
-    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON
+
 
 if __name__ == "__main__":
     app.run(debug=True)
