@@ -19,7 +19,7 @@ def dashboard():
     try:
         f = request.files['file']
         if not f:
-            return "................Please Add File..............."
+            return redirect(url_for('index'))
         stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
         data = pd.read_csv(stream)
         print(data)
