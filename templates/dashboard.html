@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+          <title>{% block title %} Data Visualization{% endblock %}</title>
+        <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  </head>
+
+<body class="bg-light"  style=" background-image: url({{ url_for('static', filename='bg2.jpg') }}) ;
+          background-size: cover;   font-family: 'Comfortaa';font-size: 22px;">
+    <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" style="text-shadow: 2px 4px 4px lightgray" >Data Visualization</a>
+        <div><h1 style="text-shadow: 2px 4px 4px lightgray" >Dashboard</h1></div>
+    </nav>
+
+    <div class="card bg-light mb-1" style="box-shadow: 2px 5px 7px lightgrey;
+     border-radius: 10px;size: auto;
+    height: auto;width: auto;margin: 30px;max-width:90rem;font-size: small;
+    color: dimgrey;alignment: center" align="center">
+         <div class="card-header" style="font-size: large">table</div>
+          <div class="card-body">
+        {{ data | safe }}
+              <br>
+        {{ response }}
+    </div>
+     </div>
+
+    <div class="card bg-light mb-1" style="box-shadow: 2px 5px 7px lightgrey; border-radius: 10px;
+    alignment: center;
+    margin:30px; max-width: 20rem; font-size: small;
+    color: dimgrey;" align="center">
+         <div class="card-header" style="font-size: large">choose columns</div>
+          <div class="card-body" style="width: auto;height: auto">
+
+    <form class="" action="graph" method="post">
+      <div class="row">
+          <div class="col">
+     <select class="custom-select custom-select-sm"  name="graph"  >
+        <option selected>graphs</option>
+    {% for i in graph_list %}
+        <option value="{{ i }}">{{ i }}</option>
+    {% endfor %}
+              </select>
+                   </div>
+      <div class="col">
+              <select class="custom-select custom-select-sm"  name="x-axiss"  >
+        <option selected>x-axis</option>
+    {% for i in col_list %}
+        <option value="{{ i }}">{{ i }}</option>
+    {% endfor %}
+              </select>
+          </div>
+      <div class="col">
+          <select class="custom-select custom-select-sm"  name="y-axiss" >
+        <option selected>y-axis</option>
+    {% for i in col_list %}
+        <option value="{{ i }}">{{ i }}</option>
+    {% endfor %}
+              </select>
+          </div>
+      </div><br>
+          <div class="text-center"><button class="btn btn-outline-primary"
+            style="font-size:large;width: 100px;size:50px ;margin:10px ;box-shadow: 2px 5px 7px  lightgray"
+           type="submit">Plot</button></div>
+    </form>
+    </div>
+     </div>
+</body>
+</html>
+
+<style>
+    .navbar {
+        height: 65px;
+        box-shadow: 0 8px 6px -6px lightgrey;
+       }
+
+</style>
+
