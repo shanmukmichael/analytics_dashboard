@@ -20,16 +20,14 @@
         <a class="navbar-brand logo_h" style="text-shadow: 2px 4px 4px lightgray" href="{{ url_for('index') }}">
             <img style="margin-bottom: 15px;width: 40px;height: 40px;"
                  src="{{ url_for('static', filename='logo.png') }}" alt="">Data Visualization</a>
-        <div><h1 style="text-shadow: 2px 4px 4px lightgray">Dashboard</h1></div>
+        <div><h1 style="font-family: 'Comfortaa';text-shadow: 2px 4px 4px lightgray">Dashboard</h1></div>
     </nav>
 </header>
-<body class="bg-light" style=" background-image: url({{ url_for('static', filename='bg3.jpg') }}) ;
-        background-size: cover;    font-family: 'Comfortaa';font-size: 22px;">
+<body>
 <video id="videoBG" poster="{{ url_for('static', filename='poster.JPG') }}" autoplay muted loop>
     <source src="{{ url_for('static', filename='video.mp4') }}" type="video/mp4">
 </video>
-<div class="card bg-light mb-1" style="box-shadow: 2px 5px 7px lightgrey;
-         border-radius: 10px;size: auto;
+<div class="card bg-light mb-1" style="border-radius: 10px;size: auto;
         height: auto;width: auto;margin: 30px;max-width:90rem;font-size: small;
         color: dimgrey;alignment: center" align="center">
     <div class="card-header" style="font-size: large">graph
@@ -51,11 +49,13 @@
         height: 65px;
         box-shadow: 0 8px 6px -6px lightgrey;
     }
-        #videoBG {
+
+    #videoBG {
         position: fixed;
         z-index: -1;
     }
-       @media (min-aspect-ratio: 16/9) {
+
+    @media (min-aspect-ratio: 16/9) {
         #videoBG {
             width: 100%;
             height: auto;
