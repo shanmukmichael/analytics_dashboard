@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="content-type" content="text/html" ; charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" shrink-to-fit=no>
     <title>{% block title %} Data Visualization{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}"/>
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Anonymous Pro' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Saira Stencil One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -18,86 +20,89 @@
         <a class="navbar-brand logo_h" style="text-shadow: 2px 4px 4px lightgray" href="{{ url_for('index') }}">
             <img style="margin-bottom: 15px;width: 40px;height: 40px;"
                  src="{{ url_for('static', filename='logo.png') }}" alt="">Data Visualization</a>
-        <div><h1 style="text-shadow: 2px 4px 4px lightgray">Dashboard</h1></div>
-    </nav>
-</header>
-<body>
-<video id="videoBG" poster="{{ url_for('static', filename='poster.JPG') }}" autoplay muted loop>
-    <source src="{{ url_for('static', filename='video.mp4') }}" type="video/mp4">
-</video>
-<div class="card bg-light mb-1" style=";
-         border-radius: 10px;size: auto;
-        height: auto;width: auto;margin: 30px;max-width:90rem;font-size: small;
-        color: dimgrey;alignment: center" align="center">
-    <div class="card-header" style="font-size: large">table</div>
-    <div class="card-body">
-        {{ data | safe }}
-        <br>
-        {{ response }}
-    </div>
-</div>
-<center>
-    <div class="card" style=" border-radius: 10px;
-        alignment: center;
-        margin:30px; max-width: 20rem; font-size: small;
-        color: dimgrey;" align="center">
-        <div class="card-header" style="font-size: large">choose columns</div>
-        <div class="card-body" style="width: auto;height: auto">
-            <form class="" action="graph" method="post">
-                <div class="row">
-                    <div class="col">
-                        <select class="custom-select custom-select-sm" name="graph">
-                            <option selected>graph</option>
-                            {% for i in graph_list %}
-                                <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="custom-select custom-select-sm" name="x-axiss">
-                            <option selected>x</option>
-                            {% for i in col_list %}
-                                <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="custom-select custom-select-sm" name="y-axiss">
-                            <option selected>y</option>
-                            {% for i in col_list %}
-                                <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+        <div class="center">
+            <form class="form-inline" action="dashboard" method="post" enctype="multipart/form-data">
+                <div class="input-group mb-1" style="margin-top: 5px">
+                    <input type="file" class="custom-file-input" id="customFile" name="file">
+                    <label class="custom-file-label" style="font-size: smaller"
+                           for="customFile">Choose CSV file</label>
                 </div>
-                <br>
-                <div class="text-center">
+                <div class="col-sm" style="margin-bottom: 3px">
                     <button class="btn btn-outline-primary"
-                            style="font-size:large;width: 100px;size:50px ;margin:10px ;
-                            box-shadow: 2px 5px 7px  lightgray"
-                            type="submit">Plot
+                            style="size:40px ;box-shadow: 2px 5px 7px  lightgray;" type="submit">Upload
                     </button>
                 </div>
             </form>
         </div>
-    </div>
-</center>
+        <a class="navbar-brand" style="text-shadow: 2px 4px 4px lightgray"
+           href="https://github.com/shanmukmichael/analytics_dashboard">
+            <h7>Github</h7>
+            <img style="margin-bottom: 15px;width: 40px;height: 40px;"
+                 src="{{ url_for('static', filename='git.jpg') }}" alt=""></a>
+    </nav>
+</header>
 
+<body>
+<video id="videoBG" poster="{{ url_for('static', filename='poster.JPG') }}" autoplay muted loop>
+    <source src="{{ url_for('static', filename='video.mp4') }}" type="video/mp4">
+</video>
+<div style="alignment: center;font-size: medium;margin: 60px;color: whitesmoke;
+text-shadow: 0px 0px ;font-family: Bungee Shade">
+    <h2 class="title" style="text-align: center;font-family:Saira Stencil One;font-size: 60px;text-shadow: 0px 0px">
+        WORTHY-HACK 2020</h2>
+    <br><br>
+    <h2 class="title" style="text-align: center;font-family:'Sofia';font-size: 40px;text-shadow: 0px 0px">
+        Training Analytics Dashboard<br><br>TEAM - Code Fury
+    </h2><br>
+    <br><br><br><br>
+    <h2 class="subtitle" style="font-size:20px;text-align: center;text-shadow: 0px 0px ;font-family:'Comfortaa'" ;>
+        by<br><br>
+        Shanmuk Pandranki | Surisetty Abhishikth | Bharadvaj | Bharat Chandra<br>
+    </h2><br>
+</div>
+</h1>
+</div>
 </body>
+<footer class="container" style="text-align: center;color: whitesmoke;font-size: 15px">© IT Branch</footer>
 </html>
 
+<script type="text/javascript">
+    $('#customFile').on('change', function () {
+        var fileName = $(this).val();
+        $(this).next('.custom-file-label').html(fileName);
+    })
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window)
+    })
+</script>
+
 <style>
-    .navbar {
-        height: 65px;
-        box-shadow: 0 8px 6px -6px lightgrey;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    body {
-        background-image: linear-gradient(#2193b0, #6dd5ed);
-        background-size: cover;
-        font-family: 'Comfortaa';
-        font-size: 22px;
-    "
+    h1, h2 {
+        text-shadow: 2px 4px 4px ghostwhite;
+    }
+
+    .navbar {
+        box-shadow: 0 8px 6px -6px ghostwhite;
+        animation: mymove 4s infinite;
+        display: flex;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 5vh;
+    }
+
+    @keyframes mymove {
+        5% {
+            box-shadow: 4px 4px 100px ghostwhite;
+
+        }
     }
 
     #videoBG {
@@ -128,8 +133,10 @@
             background: url{{ url_for('static', filename='poster.JPG') }};
             background-size: cover;
             min-height: 1000px;
+            font-family: Comfortaa;
         }
     }
+
 
 </style>
 
