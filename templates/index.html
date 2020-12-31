@@ -1,88 +1,146 @@
 <!DOCTYPE html>
-<html>
-  <head>
-      <title>{% block title %} Data Visualization{% endblock %}</title>
-      <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='log.png') }}"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
-      <link href='https://fonts.googleapis.com/css?family=Anonymous Pro' rel='stylesheet'>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  </head>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html" ; charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" shrink-to-fit=no>
+    <title>{% block title %} Data Visualization{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}"/>
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Saira Stencil One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <body class="bg-light" style="background-image: url({{ url_for('static', filename='bg2.jpg') }});
-              background-size: cover;font-family: 'Comfortaa';font-size: 22px;">
-  <nav class="navbar navbar-light bg-light display-6">
-      <div class="navbar-brand" style="margin-left: 0px">
+<header id="header">
+    <nav class="navbar navbar-light bg-light display-6">
+        <a class="navbar-brand logo_h" style="text-shadow: 2px 4px 4px lightgray" href="{{ url_for('index') }}">
             <img style="margin-bottom: 15px;width: 40px;height: 40px;"
-           src="{{url_for('static', filename='log.png')}}">
-      <a class="navbar-brand" style="text-shadow: 2px 4px 4px lightgray;" >Data Visualization</a>
-             </div>
-      <form class="form-inline" action="dashboard" method="post" enctype="multipart/form-data">
-          <div class="left" style="margin: 5px">
-              <div class="container" style="margin-left: 300px">
-                  <div class="row">
-                      <div class="input-group mb-1">
-                          <input type="file" class="custom-file-input" id="customFile" name="file">
-                          <label class="custom-file-label" style="font-size: smaller"
-                                 for="customFile">Choose CSV file</label>
-                      </div>
-                      <div class="col-sm">
-                          <button class="btn btn-outline-primary" style="box-shadow: 2px 5px 7px  lightgray;margin-top: 1px"
-                                  type="submit">Upload</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </form>
-      <div>
-            <h7 style="cursor:pointer;">Github</h7>
-          <img style="width: 40px;height: 40px;margin-bottom: 15px;cursor:pointer;
-           -webkit-box-shadow: 2px 4px 4px lightgray;border-radius: 20px"
-           src="{{url_for('static', filename='github_.jpg')}}">
-      </div>
-
-  </nav>
-        <div style="alignment: center;font-size: medium;margin: 60px">
-                <h2 class="title" style="text-align: center">
-                    Training Analytics Dashboard<br><br>TEAM - Code Fury
-                </h2><br>
-            <h2 class="subtitle" style="font-size:25px;text-align: center">
-                by<br><br>
-                Shanmuk Pandranki<br><br>
-                Surisetty Abhishikth<br><br>
-                Bharadvaj<br><br>
-                Bharat Chandra</h2><br>
+                 src="{{ url_for('static', filename='logo.png') }}" alt="">Data Visualization</a>
+        <div class="center">
+            <form class="form-inline" action="dashboard" method="post" enctype="multipart/form-data">
+                <div class="input-group mb-1" style="margin-top: 5px">
+                    <input type="file" class="custom-file-input" id="customFile" name="file">
+                    <label class="custom-file-label" style="font-size: smaller"
+                           for="customFile">Choose CSV file</label>
+                </div>
+                <div class="col-sm" style="margin-bottom: 3px">
+                    <button class="btn btn-outline-primary"
+                            style="size:40px ;box-shadow: 2px 5px 7px  lightgray;" type="submit">Upload
+                    </button>
+                </div>
+            </form>
         </div>
-              <h1 class="display-6" style="text-shadow: 2px 4px 4px lightgray;text-align: center;
-              font-family: 'Anonymous Pro'" >WORTHY-HACK 2020
-            </h1>
-      <footer class="container" style="text-align: center;">© by IT Students</footer>
-  </body>
+        <a class="navbar-brand" style="text-shadow: 2px 4px 4px lightgray"
+           href="https://github.com/shanmukmichael/analytics_dashboard">
+            <h7>Github</h7>
+            <img style="margin-bottom: 15px;width: 40px;height: 40px;"
+                 src="{{ url_for('static', filename='git.jpg') }}" alt=""></a>
+    </nav>
+</header>
+
+<body class="bg-light" style="font-family: 'Comfortaa';font-size: 22px;">
+<video id="videoBG" poster="{{ url_for('static', filename='poster.JPG') }}" autoplay muted loop>
+    <source src="{{ url_for('static', filename='video.mp4') }}" type="video/mp4">
+</video>
+<div style="alignment: center;font-size: medium;margin: 60px;color: whitesmoke;font-weight: bolder;
+font-family: Bungee Shade">
+    <h2 class="title" style="text-align: center;font-family:Saira Stencil One;font-size: 60px">
+        WORTHY-HACK 2020</h2>
+        <br><br>
+
+        <h2 class="title" style="text-align: center;font-family:'Sofia';font-size: 40px">
+            Training Analytics Dashboard<br><br>TEAM - Code Fury
+    </h2><br>
+    <br><br><br><br>
+    <h2 class="subtitle" style="font-size:20px;text-align: center;font-family:'Comfortaa'";>
+        by<br><br>
+        Shanmuk Pandranki | Surisetty Abhishikth | Bharadvaj | Bharat Chandra<br>
+    </h2><br>
+
+</div>
+</h1>
+
+</div>
+
+</body>
+<footer class="container" style="text-align: center;color: whitesmoke;font-size: 15px">© IT Branch</footer>
 </html>
 
-<script>
-    $('#customFile').on('change',function(){
+<script type="text/javascript">
+    $('#customFile').on('change', function () {
         var fileName = $(this).val();
         $(this).next('.custom-file-label').html(fileName);
+    })
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window)
     })
 </script>
 
 <style>
-      h1, h2 {
-        text-shadow: 2px 4px 4px dimgrey;
-      }
-    .navbar {
-        height: 65px;
-        box-shadow: 0 8px 6px -6px lightgrey;
-        animation: mymove 2s infinite;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-      @keyframes mymove {
-          5% {
-              box-shadow: 4px 4px 100px dimgrey
-          }
-      }
+
+    h1, h2 {
+        text-shadow: 2px 4px 4px ghostwhite;
+    }
+
+    .navbar {
+        box-shadow: 0 8px 6px -6px ghostwhite;
+        animation: mymove 4s infinite;
+        display: flex;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 5vh;
+    }
+
+    @keyframes mymove {
+        5% {
+            box-shadow: 4px 4px 100px ghostwhite;
+
+        }
+    }
+
+    #videoBG {
+        position: fixed;
+        z-index: -1;
+    }
+
+    @media (min-aspect-ratio: 16/9) {
+        #videoBG {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+        #videoBG {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 767px) {
+        #videoBG {
+            display: none;
+        }
+
+        body {
+            background: url{{ url_for('static', filename='poster.JPG') }};
+            background-size: cover;
+            min-height: 1000px;
+            font-family: Comfortaa;
+        }
+    }
+
+
 </style>
 
