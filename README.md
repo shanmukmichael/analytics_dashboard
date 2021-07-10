@@ -8,10 +8,10 @@ See project
 ```
 
 <p align="center">
-  <img widht ="300" height="300" src="https://user-images.githubusercontent.com/55943851/91034659-fe6c2c00-e622-11ea-905c-40581960f716.png">
-  <img widht ="300" height="300" src="https://user-images.githubusercontent.com/55943851/90972381-2d58a400-e536-11ea-973a-3dd2a506c4cc.png">
-   <img widht ="300" height="300" src="https://user-images.githubusercontent.com/55943851/90972403-55e09e00-e536-11ea-8e5b-ade97e96fb6f.png">
-  <img widht ="300" height="300" src="https://user-images.githubusercontent.com/55943851/90972338-dfdc3700-e535-11ea-9c30-6a9cdbf31516.png">
-   <img widht ="300" height="300" src="https://user-images.githubusercontent.com/55943851/90972452-c2f43380-e536-11ea-9add-9ad31b9d9ac4.png">
+  <img widht ="300" height="300" src="https://user-images.githubusercontent.com/55943851/125156786-f22e8600-e184-11eb-9359-99acd363efcb.png">
+  
+  <img widht ="300" height="300" src="https://user-images.githubusercontent.com/55943851/125156789-f5297680-e184-11eb-9ef4-1241017253b0.png">
+  
+   <img widht ="300" height="300" src="https://user-images.githubusercontent.com/55943851/125156791-f8bcfd80-e184-11eb-9e76-418dbe49472a.png">
 </p>
   
