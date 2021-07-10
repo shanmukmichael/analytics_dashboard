@@ -6,6 +6,14 @@
 # flask,html
 ```
 
+  
+<p align="center" >
+  <a href="https://analystics-dashboard.herokuapp.com/"> Go To Website </a>  
+  <br><br>
+</p>
+
+
+
 <p align="center">
   <img widht ="500" height="500" src="https://user-images.githubusercontent.com/55943851/125156786-f22e8600-e184-11eb-9359-99acd363efcb.png"></br></br>
   
