@@ -4,7 +4,6 @@
 • WORTHY-HACK 2020 Competition
 # Group Project
 # flask,html
-See project
 ```
 
 <p align="center">
